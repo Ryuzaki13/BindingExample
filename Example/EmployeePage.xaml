@@ -1,0 +1,50 @@
+﻿<Page x:Class="Example.EmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Example"
+      mc:Ignorable="d" 
+      FontSize="32"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EmployeePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Name="lvEmployee" ItemsSource="{Binding Employees}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Margin="10" Source="{Binding Photo}"></Image>
+
+                        <TextBlock Grid.Column="1">
+                            <Run FontWeight="Bold" Text="{Binding LastName}"></Run>
+                            <Run FontWeight="Bold" Text="{Binding FirstName}"></Run>
+                            <LineBreak></LineBreak>
+                            <Run Foreground="DarkMagenta" Text="{Binding Login}"></Run>
+                            <LineBreak></LineBreak>
+                            <Run Text="{Binding Role.Name}"></Run>
+                        </TextBlock>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Column="1">
+            <TextBox Text="{Binding ElementName=lvEmployee, Path=SelectedItem.LastName}"></TextBox>
+            <TextBox Text="{Binding ElementName=lvEmployee, Path=SelectedItem.FirstName}"></TextBox>
+            <ComboBox SelectedItem="{Binding ElementName=lvEmployee, Path=SelectedItem.Role}" Name="cbRole" DisplayMemberPath="Name"></ComboBox>
+        </StackPanel>
+
+    </Grid>
+</Page>

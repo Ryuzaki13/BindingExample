@@ -1,0 +1,26 @@
+﻿<Page x:Class="Example.TestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Example"
+      mc:Ignorable="d" 
+      FontSize="80"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TestPage">
+
+    <Grid>
+        <StackPanel>
+            <ComboBox Name="cbEmployee">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding LastName}"></Run>
+                            <Run Text="{Binding FirstName}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>
